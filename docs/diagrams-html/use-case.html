@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UML Use Case</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 28px;
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .sheet {
+      background: #ffffff;
+      border: 1px solid #d8dee8;
+      border-radius: 10px;
+      padding: 24px;
+      overflow: auto;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <h1>UML Use Case</h1>
+  <div class="sheet">
+    <pre class="mermaid">flowchart LR
+    Actor[&quot;Оператор банка&quot;]
+    Admin[&quot;Администратор&quot;]
+
+    UC1((&quot;Авторизоваться&quot;))
+    UC2((&quot;Управлять клиентами&quot;))
+    UC3((&quot;Управлять счетами&quot;))
+    UC4((&quot;Управлять банками-партнерами&quot;))
+    UC5((&quot;Проводить транзакцию&quot;))
+    UC6((&quot;Искать и фильтровать записи&quot;))
+    UC7((&quot;Выбрать режим ORM/SQL&quot;))
+    UC8((&quot;Запустить тесты&quot;))
+
+    Actor --&gt; UC1
+    Actor --&gt; UC2
+    Actor --&gt; UC3
+    Actor --&gt; UC4
+    Actor --&gt; UC5
+    Actor --&gt; UC6
+    Actor --&gt; UC7
+    Admin --&gt; UC8
+</pre>
+  </div>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'default' });
+  </script>
+</body>
+</html>

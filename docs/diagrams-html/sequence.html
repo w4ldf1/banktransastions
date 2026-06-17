@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UML Sequence Diagram</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 28px;
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .sheet {
+      background: #ffffff;
+      border: 1px solid #d8dee8;
+      border-radius: 10px;
+      padding: 24px;
+      overflow: auto;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <h1>UML Sequence Diagram</h1>
+  <div class="sheet">
+    <pre class="mermaid">sequenceDiagram
+    actor Operator as Оператор
+    participant UI as Avalonia GUI
+    participant API as ASP.NET Core API
+    participant Auth as TokenService
+    participant Service as BankingService
+    participant DB as SQLite
+
+    Operator-&gt;&gt;UI: Вводит параметры перевода
+    UI-&gt;&gt;API: POST /api/transactions?mode=sql
+    API-&gt;&gt;Auth: Validate(Bearer token)
+    Auth--&gt;&gt;API: AuthenticatedUser
+    API-&gt;&gt;Service: CreateTransactionAsync(request)
+    Service-&gt;&gt;Service: Validate amount, accounts, currency
+    Service-&gt;&gt;DB: SELECT accounts, partner fee
+    Service-&gt;&gt;DB: UPDATE source balance
+    Service-&gt;&gt;DB: UPDATE destination balance
+    Service-&gt;&gt;DB: INSERT transaction
+    DB--&gt;&gt;Service: Transaction id
+    Service--&gt;&gt;API: TransactionDto
+    API--&gt;&gt;UI: 201 Created
+    UI--&gt;&gt;Operator: Обновленный список транзакций и счетов
+</pre>
+  </div>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'default' });
+  </script>
+</body>
+</html>

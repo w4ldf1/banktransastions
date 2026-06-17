@@ -1,0 +1,58 @@
+erDiagram
+    USERS {
+        int Id PK
+        string Username UK
+        string PasswordHash
+        string Role
+    }
+
+    CUSTOMERS {
+        int Id PK
+        string CustomerType
+        string FullName
+        string TaxId UK
+        string Email
+        string Phone
+        datetime CreatedAtUtc
+    }
+
+    PARTNER_BANKS {
+        int Id PK
+        string Name
+        string Country
+        string SwiftCode UK
+        bool IsForeign
+        decimal FeePercent
+        datetime CreatedAtUtc
+    }
+
+    ACCOUNTS {
+        int Id PK
+        int CustomerId FK
+        string AccountNumber UK
+        string AccountType
+        string Currency
+        decimal Balance
+        int PartnerBankId FK
+        bool IsActive
+        datetime OpenedAtUtc
+    }
+
+    TRANSACTIONS {
+        int Id PK
+        int FromAccountId FK
+        int ToAccountId FK
+        int PartnerBankId FK
+        decimal Amount
+        decimal FeeAmount
+        string Currency
+        string Description
+        string Status
+        datetime CreatedAtUtc
+    }
+
+    CUSTOMERS ||--o{ ACCOUNTS : owns
+    PARTNER_BANKS ||--o{ ACCOUNTS : services
+    ACCOUNTS ||--o{ TRANSACTIONS : source
+    ACCOUNTS ||--o{ TRANSACTIONS : destination
+    PARTNER_BANKS ||--o{ TRANSACTIONS : charges

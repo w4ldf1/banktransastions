@@ -1,0 +1,29 @@
+КАК ЗАПУСТИТЬ ПРОЕКТ
+
+1. Открыть терминал / PowerShell в этой папке:
+   bank-transactions-variant9
+
+2. Один раз проверить сборку:
+   dotnet restore
+   dotnet build
+   dotnet test
+
+3. Запустить сервер и НЕ закрывать это окно:
+   dotnet run --project src\BankTransactions.Server --urls http://localhost:5055
+
+4. Открыть второе окно терминала в этой же папке и запустить оконное приложение:
+   dotnet run --project src\BankTransactions.Client
+
+5. Логин:
+   admin
+   admin123
+
+ОТЧЕТ
+
+docs\REPORT.docx
+docs\REPORT.md
+
+ДИАГРАММЫ В БРАУЗЕРЕ
+
+Открыть двойным кликом:
+docs\diagrams-html\index.html

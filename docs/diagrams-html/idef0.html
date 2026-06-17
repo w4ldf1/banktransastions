@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDEF0</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 28px;
+      font-family: Arial, sans-serif;
+      color: #111827;
+      background: #f5f7fb;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .sheet {
+      width: 1600px;
+      max-width: calc(100vw - 56px);
+      overflow: auto;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      padding: 12px;
+    }
+    svg {
+      display: block;
+      width: 1560px;
+      height: 1000px;
+      background: #ffffff;
+    }
+    .frame, .line, .box {
+      fill: none;
+      stroke: #111827;
+      stroke-width: 2;
+    }
+    .box {
+      fill: #ffffff;
+    }
+    .shadow {
+      fill: #d9d9d9;
+      stroke: none;
+    }
+    .arrow {
+      fill: none;
+      stroke: #111827;
+      stroke-width: 2;
+      marker-end: url(#arrow);
+    }
+    .label {
+      font-size: 15px;
+      fill: #111827;
+      paint-order: stroke;
+      stroke: #ffffff;
+      stroke-width: 4px;
+      stroke-linejoin: round;
+    }
+    .text {
+      font-size: 16px;
+    }
+    .small {
+      font-size: 13px;
+    }
+    .head {
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <h1>IDEF0</h1>
+  <div class="sheet">
+    <svg viewBox="0 0 1560 1000" role="img" aria-label="IDEF0 управление банковскими транзакциями">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,6 L9,3 z" fill="#111827"></path>
+        </marker>
+      </defs>
+
+      <rect x="18" y="18" width="1524" height="944" class="frame"></rect>
+
+      <line x1="18" y1="138" x2="1542" y2="138" class="line"></line>
+      <line x1="18" y1="850" x2="1542" y2="850" class="line"></line>
+      <line x1="150" y1="18" x2="150" y2="138" class="line"></line>
+      <line x1="900" y1="18" x2="900" y2="138" class="line"></line>
+      <line x1="1188" y1="18" x2="1188" y2="138" class="line"></line>
+      <line x1="1395" y1="18" x2="1395" y2="138" class="line"></line>
+      <line x1="900" y1="48" x2="1395" y2="48" class="line"></line>
+      <line x1="900" y1="78" x2="1395" y2="78" class="line"></line>
+      <line x1="900" y1="108" x2="1395" y2="108" class="line"></line>
+      <line x1="1188" y1="48" x2="1188" y2="108" class="line"></line>
+
+      <text x="30" y="48" class="head">USED AT:</text>
+      <text x="164" y="48" class="head">AUTHOR:</text>
+      <text x="250" y="48" class="text">Студент</text>
+      <text x="164" y="80" class="head">PROJECT:</text>
+      <text x="255" y="80" class="text">Банковские транзакции</text>
+      <text x="164" y="118" class="head">NOTES:</text>
+      <text x="238" y="118" class="text">1  2  3  4  5  6  7  8  9  10</text>
+      <text x="728" y="48" class="head">DATE:</text>
+      <text x="785" y="48" class="text">11.06.2026</text>
+      <text x="728" y="80" class="head">REV:</text>
+      <text x="785" y="80" class="text">1.0</text>
+      <text x="914" y="40" class="head">WORKING</text>
+      <text x="914" y="70" class="head">DRAFT</text>
+      <text x="914" y="100" class="head">RECOMMENDED</text>
+      <text x="914" y="130" class="head">PUBLICATION</text>
+      <text x="1202" y="40" class="head">READER</text>
+      <text x="1320" y="40" class="head">DATE</text>
+      <text x="1408" y="40" class="head">CONTEXT:</text>
+      <rect x="1452" y="72" width="70" height="32" fill="#111827"></rect>
+      <text x="1408" y="125" class="head">A0</text>
+
+      <text x="290" y="162" class="small">C1</text>
+      <text x="570" y="162" class="small">C2</text>
+      <text x="840" y="162" class="small">C3</text>
+      <text x="1110" y="162" class="small">C4</text>
+
+      <text x="120" y="285" class="small">I1</text>
+      <text x="120" y="425" class="small">I2</text>
+      <text x="120" y="560" class="small">I3</text>
+
+      <text x="310" y="832" class="small">M1</text>
+      <text x="540" y="832" class="small">M2</text>
+      <text x="770" y="832" class="small">M3</text>
+      <text x="1000" y="832" class="small">M4</text>
+      <text x="1230" y="832" class="small">M5</text>
+
+      <path d="M290 138 V240" class="arrow"></path>
+      <text x="230" y="202" class="label">Правила авторизации</text>
+      <path d="M570 138 V258" class="arrow"></path>
+      <text x="495" y="222" class="label">Типы счетов и комиссии</text>
+      <path d="M840 138 V355" class="arrow"></path>
+      <text x="790" y="205" class="label">Ограничения БД</text>
+      <path d="M1110 138 V565" class="arrow"></path>
+      <text x="1012" y="205" class="label">Требования к операциям</text>
+
+      <path d="M18 285 H250" class="arrow"></path>
+      <text x="92" y="268" class="label">Учетные данные</text>
+      <path d="M18 425 H250" class="arrow"></path>
+      <text x="96" y="408" class="label">Данные клиентов и счетов</text>
+      <path d="M18 560 H250" class="arrow"></path>
+      <text x="116" y="544" class="label">Команда операции</text>
+
+      <rect x="262" y="242" width="220" height="126" class="shadow"></rect>
+      <rect x="250" y="230" width="220" height="126" class="box"></rect>
+      <text x="360" y="280" text-anchor="middle" class="text">Авторизовать</text>
+      <text x="360" y="304" text-anchor="middle" class="text">пользователя</text>
+      <text x="264" y="338" class="small">$0</text>
+      <text x="448" y="338" class="small">1</text>
+
+      <rect x="552" y="360" width="236" height="132" class="shadow"></rect>
+      <rect x="540" y="348" width="236" height="132" class="box"></rect>
+      <text x="658" y="400" text-anchor="middle" class="text">Вести клиентов,</text>
+      <text x="658" y="424" text-anchor="middle" class="text">счета и банки</text>
+      <text x="554" y="462" class="small">$0</text>
+      <text x="752" y="462" class="small">2</text>
+
+      <rect x="840" y="516" width="238" height="132" class="shadow"></rect>
+      <rect x="828" y="504" width="238" height="132" class="box"></rect>
+      <text x="947" y="556" text-anchor="middle" class="text">Провести</text>
+      <text x="947" y="580" text-anchor="middle" class="text">транзакцию</text>
+      <text x="842" y="618" class="small">$0</text>
+      <text x="1042" y="618" class="small">3</text>
+
+      <rect x="1144" y="644" width="236" height="132" class="shadow"></rect>
+      <rect x="1132" y="632" width="236" height="132" class="box"></rect>
+      <text x="1250" y="684" text-anchor="middle" class="text">Показать результат</text>
+      <text x="1250" y="708" text-anchor="middle" class="text">и историю</text>
+      <text x="1146" y="746" class="small">$0</text>
+      <text x="1344" y="746" class="small">4</text>
+
+      <path d="M470 293 C500 293 500 382 540 382" class="arrow"></path>
+      <text x="507" y="332" class="label">токен доступа</text>
+      <path d="M776 430 C820 430 820 536 828 536" class="arrow"></path>
+      <text x="826" y="480" class="label">выбранный счет / банк</text>
+      <path d="M1066 596 C1100 596 1100 674 1132 674" class="arrow"></path>
+      <text x="1106" y="642" class="label">запись транзакции</text>
+
+      <path d="M1368 686 H1542" class="arrow"></path>
+      <text x="1452" y="668" text-anchor="middle" class="label">O1: обновленные данные</text>
+      <path d="M1368 724 H1542" class="arrow"></path>
+      <text x="1450" y="748" text-anchor="middle" class="label">O2: результат поиска</text>
+
+      <path d="M310 850 V356" class="arrow"></path>
+      <text x="338" y="772" class="label">Avalonia GUI</text>
+      <path d="M540 850 V480" class="arrow"></path>
+      <text x="566" y="772" class="label">HTTP API</text>
+      <path d="M770 850 V480" class="arrow"></path>
+      <text x="792" y="772" class="label">EF Core ORM</text>
+      <path d="M1000 850 V636" class="arrow"></path>
+      <text x="1026" y="772" class="label">SQL-запросы</text>
+      <path d="M1230 850 V764" class="arrow"></path>
+      <text x="1252" y="824" class="label">SQLite</text>
+
+      <line x1="18" y1="912" x2="1542" y2="912" class="line"></line>
+      <line x1="300" y1="850" x2="300" y2="962" class="line"></line>
+      <line x1="1260" y1="850" x2="1260" y2="962" class="line"></line>
+      <text x="32" y="884" class="head">NODE:</text>
+      <text x="142" y="940" class="title">A0</text>
+      <text x="320" y="884" class="head">TITLE:</text>
+      <text x="780" y="940" text-anchor="middle" class="title">Управление банковскими транзакциями</text>
+      <text x="1280" y="884" class="head">NUMBER:</text>
+    </svg>
+  </div>
+</body>
+</html>

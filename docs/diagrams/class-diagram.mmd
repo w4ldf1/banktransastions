@@ -1,0 +1,75 @@
+classDiagram
+    class MainWindow {
+        -ApiClient api
+        -ComboBox mode
+        +Login()
+        +RefreshCustomers()
+        +RefreshAccounts()
+        +RefreshTransactions()
+    }
+
+    class ApiClient {
+        -HttpClient httpClient
+        +LoginAsync()
+        +SearchAsync()
+        +PostAsync()
+        +PutAsync()
+        +DeleteAsync()
+    }
+
+    class BankingService {
+        +SearchCustomersAsync()
+        +CreateCustomerAsync()
+        +UpdateCustomerAsync()
+        +DeleteCustomerAsync()
+        +CreateTransactionAsync()
+    }
+
+    class BankingDbContext {
+        +Users
+        +Customers
+        +PartnerBanks
+        +Accounts
+        +Transactions
+    }
+
+    class PasswordHasher {
+        +Hash()
+        +Verify()
+    }
+
+    class TokenService {
+        +Issue()
+        +Validate()
+    }
+
+    class Customer {
+        +Id
+        +CustomerType
+        +FullName
+        +TaxId
+    }
+
+    class Account {
+        +Id
+        +AccountNumber
+        +AccountType
+        +Currency
+        +Balance
+    }
+
+    class BankTransaction {
+        +Id
+        +Amount
+        +FeeAmount
+        +Status
+    }
+
+    MainWindow --> ApiClient
+    ApiClient --> BankingService : HTTP API
+    BankingService --> BankingDbContext
+    BankingService --> Customer
+    BankingService --> Account
+    BankingService --> BankTransaction
+    BankingService --> PasswordHasher
+    BankingService --> TokenService

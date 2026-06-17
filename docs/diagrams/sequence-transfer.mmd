@@ -1,0 +1,22 @@
+sequenceDiagram
+    actor Operator as Оператор
+    participant UI as Avalonia GUI
+    participant API as ASP.NET Core API
+    participant Auth as TokenService
+    participant Service as BankingService
+    participant DB as SQLite
+
+    Operator->>UI: Вводит параметры перевода
+    UI->>API: POST /api/transactions?mode=sql
+    API->>Auth: Validate(Bearer token)
+    Auth-->>API: AuthenticatedUser
+    API->>Service: CreateTransactionAsync(request)
+    Service->>Service: Validate amount, accounts, currency
+    Service->>DB: SELECT accounts, partner fee
+    Service->>DB: UPDATE source balance
+    Service->>DB: UPDATE destination balance
+    Service->>DB: INSERT transaction
+    DB-->>Service: Transaction id
+    Service-->>API: TransactionDto
+    API-->>UI: 201 Created
+    UI-->>Operator: Обновленный список транзакций и счетов

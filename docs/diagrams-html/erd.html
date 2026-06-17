@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ERD / DB Schema</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 28px;
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .sheet {
+      background: #ffffff;
+      border: 1px solid #d8dee8;
+      border-radius: 10px;
+      padding: 24px;
+      overflow: auto;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <h1>ERD / DB Schema</h1>
+  <div class="sheet">
+    <pre class="mermaid">erDiagram
+    USERS {
+        int Id PK
+        string Username UK
+        string PasswordHash
+        string Role
+    }
+
+    CUSTOMERS {
+        int Id PK
+        string CustomerType
+        string FullName
+        string TaxId UK
+        string Email
+        string Phone
+        datetime CreatedAtUtc
+    }
+
+    PARTNER_BANKS {
+        int Id PK
+        string Name
+        string Country
+        string SwiftCode UK
+        bool IsForeign
+        decimal FeePercent
+        datetime CreatedAtUtc
+    }
+
+    ACCOUNTS {
+        int Id PK
+        int CustomerId FK
+        string AccountNumber UK
+        string AccountType
+        string Currency
+        decimal Balance
+        int PartnerBankId FK
+        bool IsActive
+        datetime OpenedAtUtc
+    }
+
+    TRANSACTIONS {
+        int Id PK
+        int FromAccountId FK
+        int ToAccountId FK
+        int PartnerBankId FK
+        decimal Amount
+        decimal FeeAmount
+        string Currency
+        string Description
+        string Status
+        datetime CreatedAtUtc
+    }
+
+    CUSTOMERS ||--o{ ACCOUNTS : owns
+    PARTNER_BANKS ||--o{ ACCOUNTS : services
+    ACCOUNTS ||--o{ TRANSACTIONS : source
+    ACCOUNTS ||--o{ TRANSACTIONS : destination
+    PARTNER_BANKS ||--o{ TRANSACTIONS : charges
+</pre>
+  </div>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'default' });
+  </script>
+</body>
+</html>

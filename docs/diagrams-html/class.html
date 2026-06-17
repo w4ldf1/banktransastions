@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UML Class Diagram</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 28px;
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .sheet {
+      background: #ffffff;
+      border: 1px solid #d8dee8;
+      border-radius: 10px;
+      padding: 24px;
+      overflow: auto;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <h1>UML Class Diagram</h1>
+  <div class="sheet">
+    <pre class="mermaid">classDiagram
+    class MainWindow {
+        -ApiClient api
+        -ComboBox mode
+        +Login()
+        +RefreshCustomers()
+        +RefreshAccounts()
+        +RefreshTransactions()
+    }
+
+    class ApiClient {
+        -HttpClient httpClient
+        +LoginAsync()
+        +SearchAsync()
+        +PostAsync()
+        +PutAsync()
+        +DeleteAsync()
+    }
+
+    class BankingService {
+        +SearchCustomersAsync()
+        +CreateCustomerAsync()
+        +UpdateCustomerAsync()
+        +DeleteCustomerAsync()
+        +CreateTransactionAsync()
+    }
+
+    class BankingDbContext {
+        +Users
+        +Customers
+        +PartnerBanks
+        +Accounts
+        +Transactions
+    }
+
+    class PasswordHasher {
+        +Hash()
+        +Verify()
+    }
+
+    class TokenService {
+        +Issue()
+        +Validate()
+    }
+
+    class Customer {
+        +Id
+        +CustomerType
+        +FullName
+        +TaxId
+    }
+
+    class Account {
+        +Id
+        +AccountNumber
+        +AccountType
+        +Currency
+        +Balance
+    }
+
+    class BankTransaction {
+        +Id
+        +Amount
+        +FeeAmount
+        +Status
+    }
+
+    MainWindow --&gt; ApiClient
+    ApiClient --&gt; BankingService : HTTP API
+    BankingService --&gt; BankingDbContext
+    BankingService --&gt; Customer
+    BankingService --&gt; Account
+    BankingService --&gt; BankTransaction
+    BankingService --&gt; PasswordHasher
+    BankingService --&gt; TokenService
+</pre>
+  </div>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'default' });
+  </script>
+</body>
+</html>
